@@ -1,4 +1,6 @@
 <%@ taglib uri="/dspTaglib" prefix="dsp" %>
+<%@ page isELIgnored="false" %>
+<dsp:importbean bean="/atg/commerce/catalog/ProductLookup"/>
 <dsp:page>
 
     <!-- ATG Training -->
@@ -35,7 +37,19 @@
 
                         <%-- Chapter 3, Exercise 4 --%>
                         <%-- Insert ProductLookup droplet --%>
-
+                    <dsp:droplet name="ProductLookup">
+                        <dsp:param name="id" param="itemId"/>
+                        <dsp:oparam name="output">
+                            <h3><dsp:valueof param="element.displayName"/></h3>
+                            <%-- TODO: Problem with leading slash in image path (some paths have it, others don't. Why?) --%>
+                            <img src="<dsp:valueof param="element.smallImage.path"/>"/><br>
+                            Description: <dsp:valueof param="element.description"/><br>
+                            <dsp:include page="skulist.jsp">
+                                <dsp:param name="product" param="element"/>
+                            </dsp:include>
+                        </dsp:oparam>
+                    </dsp:droplet>
+                </font>
 
             </td>
         </tr>

@@ -1,4 +1,8 @@
 <%@ taglib uri="/dspTaglib" prefix="dsp" %>
+<%@ page isELIgnored="false" %>
+<dsp:importbean bean="/atg/targeting/TargetingForEach"/>
+<dsp:importbean bean="/atg/registry/RepositoryTargeters/ProductCatalog/RootCategories"/>
+<dsp:importbean bean="/atg/userprofiling/Profile"/>
 <dsp:page>
 
     <!-- ATG Training -->
@@ -31,6 +35,17 @@
 
                         <%-- Chapter 3, Exercise 1: Create a Front Page for Your Catalog --%>
                         <%-- Insert TargetingForEach to loop through RootCategories below this line --%>
+                    <dsp:droplet name="TargetingForEach">
+                        <dsp:param name="targeter" bean="RootCategories"/>
+                        <dsp:oparam name="output">
+                            <dsp:getvalueof var="templateURL" param="element.template.url"/>
+                            <dsp:a href="${templateURL}">
+                                <dsp:param name="itemId" param="element.repositoryId"/>
+                                <dsp:valueof param="element.displayName"/>
+                            </dsp:a>
+                            <br>
+                        </dsp:oparam>
+                    </dsp:droplet>
 
 
                         <%-- End: TargetingForEach --%>
@@ -41,6 +56,5 @@
     </table>
     </BODY>
     </HTML>
-
 
 </dsp:page>

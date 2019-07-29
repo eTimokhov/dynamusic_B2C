@@ -1,4 +1,7 @@
 <%@ taglib uri="/dspTaglib" prefix="dsp" %>
+<%@ page isELIgnored="false" %>
+<dsp:importbean bean="/atg/commerce/catalog/CategoryLookup"/>
+<dsp:importbean bean="/atg/dynamo/droplet/ForEach"/>
 <dsp:page>
 
     <!-- ATG Training -->
@@ -32,8 +35,36 @@
 
                         <%-- Chapter 3, Exercise 3 --%>
                         <%-- Insert CategoryLookup droplet --%>
-
-
+                    <dsp:droplet name="CategoryLookup">
+                        <dsp:param name="id" param="itemId"/>
+                        <dsp:oparam name="output">
+                            <h4>Categories</h4>
+                            <dsp:droplet name="ForEach">
+                                <dsp:param name="array" param="element.childCategories"/>
+                                <dsp:oparam name="output">
+                                    <dsp:getvalueof var="templateURL" param="element.template.url"/>
+                                    <dsp:a href="${templateURL}">
+                                        <dsp:param name="itemId" param="element.repositoryId"/>
+                                        <dsp:valueof param="element.displayName"/>
+                                    </dsp:a>
+                                    <br>
+                                </dsp:oparam>
+                            </dsp:droplet>
+                            <h4>Products</h4>
+                            <dsp:droplet name="ForEach">
+                                <dsp:param name="array" param="element.childProducts"/>
+                                <dsp:oparam name="output">
+                                    <dsp:getvalueof var="templateURL" param="element.template.url"/>
+                                    <dsp:a href="${templateURL}">
+                                        <dsp:param name="itemId" param="element.repositoryId"/>
+                                        <dsp:valueof param="element.displayName"/>
+                                    </dsp:a>
+                                    <br>
+                                </dsp:oparam>
+                            </dsp:droplet>
+                        </dsp:oparam>
+                    </dsp:droplet>
+                </font>
             </td>
         </tr>
     </table>
