@@ -2,47 +2,46 @@
 <dsp:page>
 
 
-<!-------------------------------------------------------------
-  Dynamusic Site Mockup
-  
-  <TEMPLATE>
-  
-  Starter page for any JSP required.
-  
-  ------------------------------------------------------------->
-  
+    <!-------------------------------------------------------------
+    Dynamusic Site Mockup
 
-<HTML>
-  <HEAD>
-    <TITLE>(TEMPLATE)</TITLE>
-  </HEAD>
-  <BODY>
+    <TEMPLATE>
 
-  <dsp:include page="common/header.jsp">
-    <dsp:param name="pagename" value="(TEMPLATE)"/>
-  </dsp:include>    
+    Starter page for any JSP required.
+
+    ------------------------------------------------------------->
+
+
+    <HTML>
+    <HEAD>
+        <TITLE>(TEMPLATE)</TITLE>
+    </HEAD>
+    <BODY>
+
+    <dsp:include page="common/header.jsp">
+        <dsp:param name="pagename" value="(TEMPLATE)"/>
+    </dsp:include>
     <table width="700" cellpadding="8">
-      <tr>
-        <!-- Sidebar -->
-        <td width="100" bgcolor="ghostwhite" valign="top">
-          <dsp:include page="common/sidebar.jsp"></dsp:include> 
-    
-        </td>
-        <!-- Page Body -->
+        <tr>
+            <!-- Sidebar -->
+            <td width="100" bgcolor="ghostwhite" valign="top">
+                <dsp:include page="common/sidebar.jsp"></dsp:include>
 
-        <td valign="top">
-          <font face="Verdana,Geneva,Arial" size="-1">
+            </td>
+            <!-- Page Body -->
 
-          <!-- *** Start page content *** -->
+            <td valign="top">
+                <font face="Verdana,Geneva,Arial" size="-1">
+
+                    <!-- *** Start page content *** -->
 
 
+                    <!-- *** End content *** -->
 
-          <!-- *** End content *** -->
-          
-          </font>
-        </td>
+                </font>
+            </td>
     </table>
-  </BODY>
-</HTML>
+    </BODY>
+    </HTML>
 </dsp:page>
 

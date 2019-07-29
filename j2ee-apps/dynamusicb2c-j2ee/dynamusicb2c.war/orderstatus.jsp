@@ -8,32 +8,30 @@
 <%@ taglib uri="/dspTaglib" prefix="dsp" %>
 <dsp:page>
 
-<dsp:importbean bean="/atg/commerce/ShoppingCart"/>
+    <dsp:importbean bean="/atg/commerce/ShoppingCart"/>
 
-<HTML>
-  <HEAD>
-    <TITLE>Dynamusic Order Status</TITLE>
-  </HEAD>
-  <BODY>
+    <HTML>
+    <HEAD>
+        <TITLE>Dynamusic Order Status</TITLE>
+    </HEAD>
+    <BODY>
     <dsp:include page="common/header.jsp">
-       <dsp:param name="pagename" value="Order Status"/>
+        <dsp:param name="pagename" value="Order Status"/>
     </dsp:include>
     <table width="700" cellpadding="8">
-      <tr>
-        <!-- Sidebar -->
-        <td width="100" bgcolor="ghostwhite" valign="top">
-          <jsp:include page="navbar.jsp" flush="true"></jsp:include>
-        </td>
-        <!-- Page Body -->
-        <td valign="top">
-          <font face="Verdana,Geneva,Arial" color="midnightblue">
+        <tr>
+            <!-- Sidebar -->
+            <td width="100" bgcolor="ghostwhite" valign="top">
+                <jsp:include page="navbar.jsp" flush="true"></jsp:include>
+            </td>
+            <!-- Page Body -->
+            <td valign="top">
+                <font face="Verdana,Geneva,Arial" color="midnightblue">
 
-<%-- Ch. 8, Ex. 2, Step 2: Display order number --%>
-
-
+                        <%-- Ch. 8, Ex. 2, Step 2: Display order number --%>
 
 
-</body>
-</html>
+    </body>
+    </html>
 
 </dsp:page>

@@ -9,16 +9,16 @@
 <%@ taglib uri="/dspTaglib" prefix="dsp" %>
 <dsp:page>
 
-<%-- Import CartModifierFormHandler component --%>
-<dsp:importbean bean="/atg/commerce/order/purchase/CartModifierFormHandler"/>
+    <%-- Import CartModifierFormHandler component --%>
+    <dsp:importbean bean="/atg/commerce/order/purchase/CartModifierFormHandler"/>
 
-<%-- Form to choose quantity and add SKU to cart --%>
-<dsp:form action="cart.jsp" method="post">
-   <dsp:input type="hidden" bean="CartModifierFormHandler.catalogRefIds" paramvalue="skuId"/>
-   <dsp:input type="hidden" bean="CartModifierFormHandler.productId" paramvalue="productId"/>
-   <dsp:input type="hidden" bean="CartModifierFormHandler.addItemToOrderSuccessURL" value="cart.jsp"/>
-   <dsp:input type="input" size="5" bean="CartModifierFormHandler.quantity" value="1"/>
-   <dsp:input type="submit" bean="CartModifierFormHandler.addItemToOrder" value="Add to Cart"/>
-</dsp:form>
+    <%-- Form to choose quantity and add SKU to cart --%>
+    <dsp:form action="cart.jsp" method="post">
+        <dsp:input type="hidden" bean="CartModifierFormHandler.catalogRefIds" paramvalue="skuId"/>
+        <dsp:input type="hidden" bean="CartModifierFormHandler.productId" paramvalue="productId"/>
+        <dsp:input type="hidden" bean="CartModifierFormHandler.addItemToOrderSuccessURL" value="cart.jsp"/>
+        <dsp:input type="input" size="5" bean="CartModifierFormHandler.quantity" value="1"/>
+        <dsp:input type="submit" bean="CartModifierFormHandler.addItemToOrder" value="Add to Cart"/>
+    </dsp:form>
 
 </dsp:page>
