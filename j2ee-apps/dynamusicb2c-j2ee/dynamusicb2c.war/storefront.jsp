@@ -3,6 +3,7 @@
 <dsp:importbean bean="/atg/targeting/TargetingForEach"/>
 <dsp:importbean bean="/atg/registry/RepositoryTargeters/ProductCatalog/RootCategories"/>
 <dsp:importbean bean="/atg/userprofiling/Profile"/>
+<dsp:importbean bean="/atg/commerce/catalog/CatalogNavHistory"/>
 <dsp:page>
 
     <!-- ATG Training -->
@@ -41,6 +42,8 @@
                             <dsp:getvalueof var="templateURL" param="element.template.url"/>
                             <dsp:a href="${templateURL}">
                                 <dsp:param name="itemId" param="element.repositoryId"/>
+                                <dsp:param name="navAction" value="jump"/>
+                                <dsp:param name="navCount" bean="CatalogNavHistory.navCount"/>
                                 <dsp:valueof param="element.displayName"/>
                             </dsp:a>
                             <br>
