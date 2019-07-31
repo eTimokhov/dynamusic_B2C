@@ -29,11 +29,15 @@
             <!-- display SKU name -->
             <li><dsp:valueof param="sku.displayName"/>,
 
-            <%-- Chapter 5, Ex. 1: include discountedprice.jsp to display list and discounted price --%>
-            <%-- pass product (passed in from genericproduct.jsp) and sku (from the ForEach here) as parameters named product and sku --%>
+                    <%-- Chapter 5, Ex. 1: include discountedprice.jsp to display list and discounted price --%>
+                    <%-- pass product (passed in from genericproduct.jsp) and sku (from the ForEach here) as parameters named product and sku --%>
 
-            <dsp:valueof converter="currency" param="sku.listPrice"/>
-
+                    <%--            <dsp:valueof converter="currency" param="sku.listPrice"/>--%>
+                <dsp:include page="discountprice.jsp">
+                    <dsp:param name="sku" param="sku"/>
+                    <dsp:param name="product" param="product"/>
+                </dsp:include>
+            </li>
         </dsp:oparam>
         <dsp:oparam name="empty">
             There are no SKUS to display for this product.

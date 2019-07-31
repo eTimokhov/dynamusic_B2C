@@ -11,6 +11,15 @@
     <%-- Chapter 5, Exercise 1 --%>
 
     <dsp:droplet name="/atg/commerce/pricing/PriceItem">
+        <dsp:param name="item" param="sku"/>
+        <dsp:param name="product" param="product"/>
+        <dsp:oparam name="output">
+            Base price: <dsp:valueof converter="currency" param="element.priceInfo.ListPrice"/>,
+            <b>
+                Discounted price: <dsp:valueof converter="currency" param="element.priceInfo.amount"/>
+            </b>
+        </dsp:oparam>
+    </dsp:droplet>
 
 </dsp:page>
 
