@@ -37,6 +37,11 @@
                     <dsp:param name="sku" param="sku"/>
                     <dsp:param name="product" param="product"/>
                 </dsp:include>
+
+                <dsp:include page="addtocart.jsp">
+                    <dsp:param name="skuId" param="sku.repositoryId"/>
+                    <dsp:param name="productId" param="product.repositoryId"/>
+                </dsp:include>
             </li>
         </dsp:oparam>
         <dsp:oparam name="empty">
