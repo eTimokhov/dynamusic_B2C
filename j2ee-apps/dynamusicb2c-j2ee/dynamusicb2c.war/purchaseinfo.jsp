@@ -37,15 +37,16 @@
                         <dsp:param bean="ExpressCheckoutFormHandler.formError" name="value"/>
                         <dsp:oparam name="true">
                             <font color=cc0000><STRONG>
-                                <UL>
+                                <ul>
                                     <dsp:droplet name="/atg/dynamo/droplet/ErrorMessageForEach">
-                                    <dsp:param bean="ExpressCheckoutFormHandler.formExceptions" name="exceptions"/>
-                                    <dsp:oparam name="output">
-                                    <LI>
-                                            <dsp:valueof param="message"/>
+                                        <dsp:param bean="ExpressCheckoutFormHandler.formExceptions" name="exceptions"/>
+                                        <dsp:oparam name="output">
+                                            <li>
+                                                <dsp:valueof param="message"/>
+                                            </li>
                                         </dsp:oparam>
-                                        </dsp:droplet>
-                                </UL>
+                                    </dsp:droplet>
+                                </ul>
                             </STRONG></font>
                         </dsp:oparam>
                     </dsp:droplet>
@@ -53,45 +54,74 @@
                     <dsp:form action="purchaseinfo.jsp" method="post">
 
                         <%-- Chapter 8, Ex. 1, Step 1: Insert hidden inputs --%>
+                        <dsp:input type="hidden" bean="ExpressCheckoutFormHandler.commitOrder" value="false"/>
+                        <dsp:input type="hidden" bean="ExpressCheckoutFormHandler.paymentGroupNeeded" value="false"/>
+                        <dsp:input type="hidden" bean="ExpressCheckoutFormHandler.shippingGroupNeeded" value="false"/>
+                        <dsp:input type="hidden" bean="ExpressCheckoutFormHandler.expressCheckoutSuccessURL"
+                                   value="orderconfirm.jsp"/>
 
 
-                    <font face="Verdana,Geneva,Arial" size="+2" color="midnightblue">Shipping Method</font><br>
+                        <font face="Verdana,Geneva,Arial" size="+2" color="midnightblue">Shipping Method</font><br>
                         <%-- Shipping Methods Select Box --%>
-                    <dsp:droplet name="AvailableShippingMethods">
-                    <dsp:param name="shippingGroup" bean="ExpressCheckoutFormHandler.shippingGroup"/>
+                        <dsp:droplet name="AvailableShippingMethods">
+                            <dsp:param name="shippingGroup" bean="ExpressCheckoutFormHandler.shippingGroup"/>
 
-                    <dsp:oparam name="output">
-                    <dsp:select bean="ExpressCheckoutFormHandler.shippingGroup.shippingMethod">
-                    <dsp:droplet name="ForEach">
-                    <dsp:param name="array" param="availableShippingMethods"/>
+                            <dsp:oparam name="output">
+                                <dsp:select bean="ExpressCheckoutFormHandler.shippingGroup.shippingMethod">
+                                    <dsp:droplet name="ForEach">
+                                        <dsp:param name="array" param="availableShippingMethods"/>
 
-                    <dsp:oparam name="output">
-                    <dsp:param name="method" param="element"/>
-                    <option value='<dsp:valueof param="method"/>'>
-                            <dsp:valueof param="method"/>
+                                        <dsp:oparam name="output">
+                                            <dsp:param name="method" param="element"/>
+                                            <option value='<dsp:valueof param="method"/>'>
+                                                <dsp:valueof param="method"/>
+                                            </option>
 
-                        </dsp:oparam>
-                        </dsp:droplet>
-                        </dsp:select>
-                        </dsp:oparam>
+                                        </dsp:oparam>
+                                    </dsp:droplet>
+                                </dsp:select>
+                            </dsp:oparam>
                         </dsp:droplet>
 
 
                         <p>
                             <font face="Verdana,Geneva,Arial" size="+2" color="midnightblue">Shipping Information</font><br>
                                 <%-- Chapter 8, Ex. 1, Step 2: Insert Name and address information here --%>
-                            <b>First Name:</b> <br>
-                            <b>Middle Name:</b> <br>
-                            <b>Last Name:</b> <br>
-                            <b>Address 1:</b> <br>
-                            <b>Address 2:</b> <br>
-                            <b>City:</b> <br>
-                            <b>State:</b> <br>
-                            <b>Postal Code:</b> <br>
-                            <b>Country:</b> <br>
-                            <b>Email:</b> <br>
-                            <b>Phone:</b>
-                        <P>
+                            <b>First Name:</b> <dsp:input type="text" size="30"
+                                bean="ExpressCheckoutFormHandler.shippingGroup.shippingAddress.firstName"
+                                beanvalue="Profile.shippingAddress.firstName"/> <br>
+                            <b>Middle Name:</b> <dsp:input type="text" size="30"
+                                bean="ExpressCheckoutFormHandler.shippingGroup.shippingAddress.middleName"
+                                beanvalue="Profile.shippingAddress.middleName"/><br>
+                            <b>Last Name:</b> <dsp:input type="text" size="30"
+                                bean="ExpressCheckoutFormHandler.shippingGroup.shippingAddress.lastName"
+                                beanvalue="Profile.shippingAddress.lastName"/><br>
+                            <b>Address 1:</b> <dsp:input type="text" size="30"
+                                bean="ExpressCheckoutFormHandler.shippingGroup.shippingAddress.address1"
+                                beanvalue="Profile.shippingAddress.address1"/><br>
+                            <b>Address 2:</b> <dsp:input type="text" size="30"
+                                bean="ExpressCheckoutFormHandler.shippingGroup.shippingAddress.address2"
+                                beanvalue="Profile.shippingAddress.address2"/><br>
+                            <b>City:</b> <dsp:input type="text" size="30"
+                                bean="ExpressCheckoutFormHandler.shippingGroup.shippingAddress.city"
+                                beanvalue="Profile.shippingAddress.city"/><br>
+                            <b>State:</b> <dsp:input type="text" size="30"
+                                bean="ExpressCheckoutFormHandler.shippingGroup.shippingAddress.state"
+                                beanvalue="Profile.shippingAddress.state"/><br>
+                            <b>Postal Code:</b> <dsp:input type="text" size="30"
+                                bean="ExpressCheckoutFormHandler.shippingGroup.shippingAddress.postalCode"
+                                beanvalue="Profile.shippingAddress.postalCode"/><br>
+                            <b>Country:</b> <dsp:input type="text" size="30"
+                                bean="ExpressCheckoutFormHandler.shippingGroup.shippingAddress.country"
+                                beanvalue="Profile.shippingAddress.country"/><br>
+                            <b>Email:</b> <dsp:input type="text" size="30"
+                                bean="ExpressCheckoutFormHandler.shippingGroup.shippingAddress.email"
+                                beanvalue="Profile.email"/><br>
+                            <b>Phone:</b><dsp:input type="text" size="30"
+                                bean="ExpressCheckoutFormHandler.shippingGroup.shippingAddress.phoneNumber"
+                                beanvalue="Profile.shippingAddress.phoneNumber"/>
+                        </p>
+                        <p>
 
                             <!-- Billing information -->
                             <font face="Verdana,Geneva,Arial" size="+2" color="midnightblue">Billing
@@ -103,28 +133,30 @@
                             <b>Middle Name:</b> <dsp:input
                                 bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.middleName"
                                 beanvalue="Profile.middleName" size="30" type="text"/><br>
-                            <b>Last Name:<b> <dsp:input
-                                    bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.lastName"
-                                    beanvalue="Profile.lastName" size="30" type="text" required="<%=true%>"/><br>
-                                <b>Address 1:</b> <dsp:input
-                                    bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.address1"
-                                    beanvalue="Profile.billingAddress.address1" size="30" type="text"/><br>
-                                <b>Address 2:</b> <dsp:input
-                                    bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.address2"
-                                    beanvalue="Profile.billingAddress.address2" size="30" type="text"/><br>
-                                <b>City:</b> <dsp:input
-                                    bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.city"
-                                    beanvalue="Profile.billingAddress.city" size="30" type="text" required="<%=true%>"/><br>
-                                <b>State:</b> <dsp:input
-                                    bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.state" maxsize="2"
-                                    beanvalue="Profile.billingAddress.state" size="2" type="text" required="<%=true%>"/><br>
-                                <b>Postal Code:</b> <dsp:input
-                                    bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.postalCode"
-                                    beanvalue="Profile.billingAddress.postalCode" size="10" type="text"
-                                    required="<%=true%>"/><br>
-                                <b>Country:</b> <dsp:input
-                                    bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.country"
-                                    beanvalue="Profile.billingAddress.country" size="10" type="text"/><br>
+                            <b>Last Name:</b> <dsp:input
+                                bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.lastName"
+                                beanvalue="Profile.lastName" size="30" type="text" required="<%=true%>"/><br>
+                            <b>Address 1:</b> <dsp:input
+                                bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.address1"
+                                beanvalue="Profile.billingAddress.address1" size="30" type="text"/><br>
+                            <b>Address 2:</b> <dsp:input
+                                bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.address2"
+                                beanvalue="Profile.billingAddress.address2" size="30" type="text"/><br>
+                            <b>City:</b> <dsp:input
+                                bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.city"
+                                beanvalue="Profile.billingAddress.city" size="30" type="text" required="<%=true%>"/><br>
+                            <b>State:</b> <dsp:input
+                                bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.state" maxsize="2"
+                                beanvalue="Profile.billingAddress.state" size="2" type="text" required="<%=true%>"/><br>
+                            <b>Postal Code:</b> <dsp:input
+                                bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.postalCode"
+                                beanvalue="Profile.billingAddress.postalCode" size="10" type="text"
+                                required="<%=true%>"/><br>
+                            <b>Country:</b> <dsp:input
+                                bean="ExpressCheckoutFormHandler.paymentGroup.billingAddress.country"
+                                beanvalue="Profile.billingAddress.country" size="10" type="text"/><br>
+
+                        </p>
                         <p>
                             <font face="Verdana,Geneva,Arial" size="+2" color="midnightblue">Credit Card
                                 Type:</font><br>
@@ -163,12 +195,14 @@
                                 <dsp:option value="2013"/>2013
                                 <dsp:option value="2014"/>2014
                             </dsp:select>
+                        </p>
                         <p>
 
                                 <%-- Chapter 8, Ex. 1, Step 3: Create submit button --%>
+                            <dsp:input type="submit" bean="ExpressCheckoutFormHandler.expressCheckout" value="Checkout"/>
 
-
-                            </dsp:form>
+                        </p>
+                    </dsp:form>
                 </font>
             </td>
         </tr>

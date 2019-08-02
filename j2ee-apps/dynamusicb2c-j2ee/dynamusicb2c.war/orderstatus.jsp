@@ -10,11 +10,11 @@
 
     <dsp:importbean bean="/atg/commerce/ShoppingCart"/>
 
-    <HTML>
-    <HEAD>
-        <TITLE>Dynamusic Order Status</TITLE>
-    </HEAD>
-    <BODY>
+    <html>
+    <head>
+        <title>Dynamusic Order Status</title>
+    </head>
+    <body>
     <dsp:include page="common/header.jsp">
         <dsp:param name="pagename" value="Order Status"/>
     </dsp:include>
@@ -29,6 +29,11 @@
                 <font face="Verdana,Geneva,Arial" color="midnightblue">
 
                         <%-- Ch. 8, Ex. 2, Step 2: Display order number --%>
+                    Thanks for order! Your order number is <dsp:valueof bean="ShoppingCart.last.id"/>
+                </font>
+            </td>
+        </tr>
+    </table>
 
 
     </body>

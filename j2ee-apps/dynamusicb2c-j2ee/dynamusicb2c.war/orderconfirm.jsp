@@ -49,13 +49,22 @@
                     </dsp:droplet>
 
                         <%-- Ch. 8, Ex. 1, Step 1: Display order pricing information --%>
-                    <b>Subtotal:</b> <br>
-                    <b>Shipping:</b> <br>
-                    <b>Total:</b>
+                    <b>Subtotal:</b> <dsp:valueof converter="currency" bean="ShoppingCart.current.priceInfo.amount"/>
+                    <br>
+                    <b>Shipping:</b> <dsp:valueof converter="currency"
+                                                  bean="ShoppingCart.current.priceInfo.shipping"/><br>
+                    <b>Total:</b> <dsp:valueof converter="currency" bean="ShoppingCart.current.priceInfo.total"/>
                     <p>
-
-
                         <!-- Enter form with confirm order button here -->
+
+                        <dsp:form>
+                            <dsp:input type="hidden" bean="ExpressCheckoutFormHandler.checkout" value="true"/>
+                            <dsp:input type="hidden" bean="ExpressCheckoutFormHandler.expressCheckoutSuccessURL"
+                                       value="orderstatus.jsp"/>
+                            <dsp:input type="submit" bean="ExpressCheckoutFormHandler.expressCheckout"
+                                       value="Confirm order"/>
+                        </dsp:form>
+                    </p>
 
                 </font></td>
         </tr>
